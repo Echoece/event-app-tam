@@ -15,6 +15,12 @@ export class UserService {
     return await this.userRepository.save(user);
   }
 
+  async login(loginUser: User) {
+    return await this.userRepository.findOne({
+      where: { email: loginUser.email, password: loginUser.password },
+    });
+  }
+
   async findAll() {
     return await this.userRepository.find();
   }

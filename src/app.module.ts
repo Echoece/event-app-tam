@@ -6,6 +6,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UserModule } from './user/user/user.module';
 import * as path from 'path';
 import * as process from 'process';
+import { CategoryModule } from './category/category/category.module';
+import { EventModule } from './event/event/event.module';
+import { FavouriteModule } from './favourite/favourite/favourite.module';
 
 @Module({
   imports: [
@@ -26,6 +29,9 @@ import * as process from 'process';
     }),
 
     UserModule,
+    CategoryModule,
+    EventModule,
+    FavouriteModule,
   ],
   controllers: [AppController],
   providers: [AppService],

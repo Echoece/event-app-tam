@@ -1,4 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Role } from './role.enum';
 
 @Entity({ name: 'users' })
 export class User {
@@ -14,4 +15,8 @@ export class User {
   lastname: string;
   @Column()
   contactNumber: string;
+  @Column({ type: 'enum', enum: Role })
+  role: Role;
+  @Column()
+  imgURL: string;
 }

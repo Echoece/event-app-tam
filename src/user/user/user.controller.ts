@@ -6,9 +6,11 @@ import {
   Patch,
   Param,
   Delete,
+  Res,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './entities/user.entity';
+import { Response } from 'express';
 //import { CreateUserDto } from './dto/create-user.dto';
 //import { UpdateUserDto } from './dto/update-user.dto';
 
@@ -16,9 +18,18 @@ import { User } from './entities/user.entity';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
+  @Post('register')
   create(@Body() createUser: User) {
     return this.userService.create(createUser);
+  }
+
+  @Post('login')
+  async login(@Body() createUser: User, @Res() res: Response) {
+    const user = await this.userService.login(createUser);
+    if (user) {
+      return res.status(200).json({ message: 'Logged in successfully.' });
+    }
+    return res.status(404).json({ message: 'Logged in failed.' });
   }
 
   @Get()
@@ -37,8 +48,9 @@ export class UserController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): string {
-    const user = this.userService.remove(+id);
-    return 'User deleted successfully';
+  async remove(@Param('id') id: string): Promise<string> {
+    const user = await this.userService.remove(+id);
+    if (user) return 'Delete successfully';
+    return 'Delete failed';
   }
 }
