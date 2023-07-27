@@ -5,7 +5,10 @@ import { Role } from './role.enum';
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column()
+  @Column({
+    unique: true,
+    comment: 'Unique email for each user',
+  })
   email: string;
   @Column()
   password: string;
