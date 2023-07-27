@@ -15,7 +15,7 @@ export class User {
   lastname: string;
   @Column()
   contactNumber: string;
-  @Column({ type: 'enum', enum: Role })
+  @Column({ type: 'enum', enum: Role, default: Role.USER })
   role: Role;
   @Column()
   imgURL: string;
