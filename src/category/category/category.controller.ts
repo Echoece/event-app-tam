@@ -9,12 +9,12 @@ export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
   @Post()
-  create(@Body() createCategory: Category) {
-    return this.categoryService.create(createCategory);
+  async create(@Body() createCategory: Category) {
+    return await this.categoryService.create(createCategory);
   }
   @Get()
-  findAll() {
-    return this.categoryService.findAll();
+  async findAll() {
+    return await this.categoryService.findAll();
   }
   @Delete(':id')
   async remove(@Param('id') id: string): Promise<string> {

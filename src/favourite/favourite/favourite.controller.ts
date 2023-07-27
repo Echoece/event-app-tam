@@ -9,18 +9,18 @@ export class FavouriteController {
   constructor(private readonly favouriteService: FavouriteService) {}
 
   @Post()
-  create(@Body() createFavourite: Favourite) {
-    return this.favouriteService.create(createFavourite);
+  async create(@Body() createFavourite: Favourite) {
+    return await this.favouriteService.create(createFavourite);
   }
 
   @Get()
-  findAll() {
-    return this.favouriteService.findAll();
+  async findAll() {
+    return await this.favouriteService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.favouriteService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.favouriteService.findOne(+id);
   }
   @Delete(':id')
   async remove(@Param('id') id: string): Promise<string> {

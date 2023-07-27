@@ -16,33 +16,33 @@ export class EventController {
   constructor(private readonly eventService: EventService) {}
 
   @Post()
-  create(@Body() createEvent: Event) {
-    return this.eventService.create(createEvent);
+  async create(@Body() createEvent: Event) {
+    return await this.eventService.create(createEvent);
   }
 
   @Get()
-  findAll() {
-    return this.eventService.findAll();
+  async findAll() {
+    return await this.eventService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.eventService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.eventService.findOne(+id);
   }
 
   @Get('category/:id')
-  findCategory(@Param('id') id: string) {
-    return this.eventService.findCategory(+id);
+  async findCategory(@Param('id') id: string) {
+    return await this.eventService.findCategory(+id);
   }
 
   @Get('user/:id')
-  findUser(@Param('id') id: string) {
+  async findUser(@Param('id') id: string) {
     return this.eventService.findUser(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEvent: Event) {
-    return this.eventService.update(+id, updateEvent);
+  async update(@Param('id') id: string, @Body() updateEvent: Event) {
+    return await this.eventService.update(+id, updateEvent);
   }
 
   @Delete(':id')

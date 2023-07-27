@@ -19,8 +19,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('register')
-  create(@Body() createUser: User) {
-    return this.userService.create(createUser);
+  async create(@Body() createUser: User) {
+    return await this.userService.create(createUser);
   }
 
   @Post('login')
@@ -33,18 +33,18 @@ export class UserController {
   }
 
   @Get()
-  findAll() {
-    return this.userService.findAll();
+  async findAll() {
+    return await this.userService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.userService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUser: User) {
-    return this.userService.update(+id, updateUser);
+  async update(@Param('id') id: string, @Body() updateUser: User) {
+    return await this.userService.update(+id, updateUser);
   }
 
   @Delete(':id')

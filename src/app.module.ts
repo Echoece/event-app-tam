@@ -9,6 +9,8 @@ import * as process from 'process';
 import { CategoryModule } from './category/category/category.module';
 import { EventModule } from './event/event/event.module';
 import { FavouriteModule } from './favourite/favourite/favourite.module';
+import { CommentModule } from './comment/comment/comment.module';
+import { EventRegistrationModule } from './event-registration/event-registration/event-registration.module';
 
 @Module({
   imports: [
@@ -32,6 +34,8 @@ import { FavouriteModule } from './favourite/favourite/favourite.module';
     CategoryModule,
     EventModule,
     FavouriteModule,
+    CommentModule,
+    EventRegistrationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
