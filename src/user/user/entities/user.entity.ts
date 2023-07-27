@@ -9,6 +9,10 @@ export class User {
   email: string;
   @Column()
   password: string;
+  toJSON() {
+    const { password, ...self } = this;
+    return self;
+  }
   @Column()
   firstname: string;
   @Column()
